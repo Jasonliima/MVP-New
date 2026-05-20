@@ -2,7 +2,7 @@ const express = require('express');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const router = express.Router();
 
-const authMiddleware = require('../middleware/auth');
+const authMiddleware = require('./auth');
 
 // Inicializa o SDK do Gemini buscando a chave do seu arquivo .env
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);

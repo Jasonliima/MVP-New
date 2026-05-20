@@ -18,6 +18,6 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 // Importa os Modelos
-db.User = require('./user')(sequelize, DataTypes);
+db.User = require('./User')(sequelize, DataTypes);
 
 module.exports = db;
