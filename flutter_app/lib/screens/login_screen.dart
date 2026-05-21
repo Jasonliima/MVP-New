@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
         // Redireciona para a Home Screen com sucesso
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => const HomeScreen()),
+          MaterialPageRoute(builder: (context) => const HomePage()),
         );
       }
     } catch (e) {
@@ -65,8 +65,8 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                const Icon(Icons.psychology,
-                    size: 80, color: Colors.orangeAccent),
+                const Icon(Icons.star_rounded,
+                    size: 80, color: Color(0xFFFFCC00)), // Amarelo vibrante
                 const SizedBox(height: 16),
                 const Text(
                   'Rotinamente',
@@ -74,7 +74,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: TextStyle(
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
-                    color: Colors.deepPurple,
+                    color: Color(0xFF8800FF), // Roxo da Tela Afazeres
                   ),
                 ),
                 const SizedBox(height: 48),
@@ -108,7 +108,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: _isLoading ? null : _login,
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(vertical: 18),
-                    backgroundColor: Colors.deepPurple,
+                    backgroundColor: const Color(
+                        0xFFFF0080), // Rosa vibrante da Tela Afazeres
                     foregroundColor: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12)),
@@ -128,7 +129,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             builder: (context) => const SignupScreen()));
                   },
                   child: const Text('Não tem uma conta? CRIAR CONTA',
-                      style: TextStyle(fontSize: 16, color: Colors.blueAccent)),
+                      style: TextStyle(
+                          fontSize: 16,
+                          color: Color(0xFF40B0FF))), // Azul vibrante
                 ),
               ],
             ),

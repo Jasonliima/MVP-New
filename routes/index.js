@@ -3,11 +3,13 @@ const router = express.Router();
 const { sequelize } = require('../models');
 
 const authRoutes = require('./auth');
-const chatRoutes = require('./chat');
+const taskRoutes = require('./tasks');
+const afazeresRoutes = require('./afazeres');
 
 // Mapeia os caminhos para os seus respectivos arquivos
 router.use('/auth', authRoutes);
-router.use('/chat', chatRoutes);
+router.use('/tasks', taskRoutes);
+router.use('/afazeres', afazeresRoutes);
 
 // Rota para testar a conexão com o banco de dados
 router.get('/db-status', async (req, res) => {

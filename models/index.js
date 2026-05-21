@@ -8,7 +8,8 @@ const sequelize = new Sequelize(
   process.env.DB_PASS || '',
   {
     host: process.env.DB_HOST || 'localhost',
-    dialect: 'mysql',
+    dialect: 'sqlite',
+    storage: './database.sqlite', // Cria um arquivo local para o banco de dados
     logging: false, // Oculta os logs excessivos do Sequelize no terminal
   }
 );

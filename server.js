@@ -51,7 +51,7 @@ app.use((err, req, res, next) => {
 
 // Start server
 // Nota: Manteremos o .sync() para o MVP, mas o ideal em produção é usar apenas as Migrations.
-db.sequelize.sync().then(() => {
+db.sequelize.sync({ force: true }).then(() => {
   console.log('✅ Banco de dados sincronizado.');
   app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);

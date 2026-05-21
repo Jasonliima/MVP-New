@@ -20,55 +20,45 @@ class AuthService {
 
   Future<Map<String, dynamic>> register(
       String name, String email, String password, String role) async {
-    try {
-      print('🔄 [AuthService] Tentando registrar em: $baseUrl/auth/register');
-      final response = await http.post(
-        Uri.parse('$baseUrl/auth/register'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'name': name,
-          'email': email,
-          'password': password,
-          'role': role,
-        }),
-      );
+    final response = await http.post(
+      Uri.parse('$baseUrl/auth/register'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'name': name,
+        'email': email,
+        'password': password,
+        'role': role,
+      }),
+    );
 
-      if (response.statusCode == 201) {
-        return jsonDecode(response.body);
-      } else {
-        final error = jsonDecode(response.body);
-        throw Exception(error['error'] ?? 'Falha ao criar conta');
-      }
-    } catch (e) {
-      throw Exception('Erro de conexão com o servidor: $e');
+    if (response.statusCode == 201) {
+      return jsonDecode(response.body);
+    } else {
+      final error = jsonDecode(response.body);
+      throw Exception(error['error'] ?? 'Falha ao criar conta');
     }
   }
 
   Future<void> login(String email, String password) async {
-    try {
-      print('🔄 [AuthService] Tentando fazer login em: $baseUrl/auth/login');
-      final response = await http.post(
-        Uri.parse('$baseUrl/auth/login'),
-        headers: {'Content-Type': 'application/json'},
-        body: jsonEncode({
-          'email': email,
-          'password': password,
-        }),
-      );
+    final response = await http.post(
+      Uri.parse('$baseUrl/auth/login'),
+      headers: {'Content-Type': 'application/json'},
+      body: jsonEncode({
+        'email': email,
+        'password': password,
+      }),
+    );
 
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        // Salva o token e dados do usuário globalmente
-        Session.token = data['token'];
-        Session.userId = data['user']['id'];
-        Session.userName = data['user']['name'];
-        Session.userRole = data['user']['role'];
-      } else {
-        final error = jsonDecode(response.body);
-        throw Exception(error['error'] ?? 'Falha ao realizar login');
-      }
-    } catch (e) {
-      throw Exception('Erro de conexão: $e');
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      // Salva o token e dados do usuário globalmente
+      Session.token = data['token']?.toString();
+      Session.userId = data['user']['id']?.toString();
+      Session.userName = data['user']['name']?.toString();
+      Session.userRole = data['user']['role']?.toString();
+    } else {
+      final error = jsonDecode(response.body);
+      throw Exception(error['error'] ?? 'Falha ao realizar login');
     }
   }
 }

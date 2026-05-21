@@ -14,13 +14,20 @@ class MyApp extends StatelessWidget {
       title: 'MVP App',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFFF4F5F7), // Fundo suave global
+        scaffoldBackgroundColor:
+            const Color(0xFFFFF8FF), // Fundo claro da Tela de Afazeres
         appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFD9E2EC),
-          foregroundColor: Color.fromARGB(255, 3, 189, 142),
+          backgroundColor:
+              Color(0xFF8800FF), // Roxo vibrante da Tela de Afazeres
+          foregroundColor: Colors.white,
           elevation: 0,
+          centerTitle: true,
         ),
-        primaryColor: const Color.fromARGB(255, 2, 151, 177),
+        primaryColor: const Color(0xFFFF0080), // Rosa vibrante principal
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Color(0xFFFF0080),
+          foregroundColor: Colors.white,
+        ),
       ),
       home: const LoginScreen(),
     );
